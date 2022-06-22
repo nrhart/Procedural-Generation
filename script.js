@@ -1,5 +1,5 @@
 const fillers = {
-    adventurer: ["My dude", "Bro", "Adventurer", "Traveller", "Fellow", "Citizen", "Ashen One", "Dragonborn", "Cool person", "Tarnished", "$adventurer and $adventurer", "$adventurer, $adventurer, and $adventurer", "Geoff"],
+    adventurer: ["My dude", "Bro", "Tony", "Traveller", "Fellow", "Citizen", "Ashen One", "Dragonborn", "Cool person", "Tarnished", "$adventurer and $adventurer", "$adventurer, $adventurer, and $adventurer", "Geoff"],
     pre: ["Fra", "Tro", "Gre", "Pan", "Ast", "Ara"],
     post: ["gria", "ston", "gott","-on-the-lee", "ora", "Ara", "uwu"],
     people: ["kindly", "meek", "brave", "wise", "sacred", "cherished", "honored", "forgotten", "apathetic", "mystic", "orca"],
