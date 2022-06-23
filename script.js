@@ -1,24 +1,29 @@
 const fillers = {
-    adventurer: ["My dude", "Bro", "Tony", "Traveller", "Fellow", "Citizen", "Ashen One", "Dragonborn", "Cool person", "Tarnished", "$adventurer and $adventurer", "$adventurer, $adventurer, and $adventurer", "Geoff"],
-    pre: ["Fra", "Tro", "Gre", "Pan", "Ast", "Ara"],
-    post: ["gria", "ston", "gott","-on-the-lee", "ora", "Ara", "uwu"],
-    people: ["kindly", "meek", "brave", "wise", "sacred", "cherished", "honored", "forgotten", "apathetic", "mystic", "orca"],
-    item: ["axe", "staff", "book", "cloak", "shield", "club", "sword", "magic gloves", "galvel", "fists", "mace", "potato"],
+    Tony: ["ynoT", "Tonietta", "Tony", "Brother of Tony", "Sister of Tony", "$Tony and $Tony", "$Tony, $Tony, and $Tony", "Brother of Tony", "Sister of Tony"],
+    pre: ["Ton", "Bre", "Man", "Trot", "Glen", "Glo"],
+    post: ["y", "i", "-by-the-sea" ,"dale", "ora", "amas", "acity"],
+    people: ["dastardly", "spooky", "gigantic", "hidden", "clumsy", "half-hearted", "mysterious", "unpredictable", "malicious"],
+    item: ["double bladed Tony", "sword of the slayen Tony", "book about Tony", "cape of Tony", "crest fallen shield of Tony", "Tony's number one weakness"],
     num: ["two", "three", "eleven", "so many", "too many", "an unsatisfying number of", "barely any", "an unspecified amount of", "surely a satisfactory number of"],
     looty: ["gleaming", "valuable", "esteemed", "rare", "exalted", "scintillating", "kinda gross but still usefull", "complete garbage"],
-    loots: ["coins", "chalices", "ingots", "hides", "victory points", "gems","scrolls", "bananas", "noodles", "goblins", "CS Majors", "college credits"],
-    baddies: ["orcs", "glubs", "fishmen", "cordungles", "mountain trolls", "college professors", "dragon", "evil $adventurer", "agents of chaos"],
+    loots: ["coins", "chalices of Tony's blood", "Tony's bones", "Tony's iconic hand", "Exp Points", "The Heart of Tony", "maybe a princess?"],
+    baddies: ["Evil Tony's", "Ex-Tony's", "Sea-Tony's", "Sky-Tony's", "mountain Tony's", "Grimlins", "Pepa pigs", "evil $Tony", "agents of the Tony brotherhood"],
     message: ["call", "txt", "post", "decree", "shoutz", "tweets", "choiche", "hearkens", "harkening", "harkenening", "harkenenening", "...wait, no! Come back", "Watermelon"],
     
   };
   
-  const template = `$adventurer, heed my $message!
+  /*const template = `$Tony, heed my $message!
   
   I have just come from $pre$post where the $people folk are in desperate need. Their town has been overrun by $baddies. You must venture forth at once, taking my $item, and help them.
   
   It is told that the one who can rescue them will be awarded with $num $looty $loots. Surely this must tempt one such as yourself!
   `;
+  */
+  const template = `$Tony, pay regard to my $message!
   
+  There is a place called $pre$post over the mountain, where the $people will stop at nothing to help their One Tony transcend. The road is crawling with $baddies and is up to you to get through them and stop the ritual.
+
+  Take this $item to help yourself fight through the mountain pass and destroy the One Tony once and for all. It is said that you will be rewarded with $num $looty $loots for your troubles`;
   
   // STUDENTS: You don't need to edit code below this line.
   
