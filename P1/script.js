@@ -7,6 +7,7 @@ const fillers = {
     lootpool: ["coins", "chalices of Tony's blood", "Tony's bones", "Tony's iconic hand", "Exp Points", "The Heart of Tony", "maybe a princess?"],
     foes: ["Evil Tony's", "Ex-Tony's", "Sea-Tony's", "Sky-Tony's", "mountain Tony's", "Grimlins", "Pepa pigs", "Evil $Tony", "Agents of the Tony Brotherhood"],
     amount: ["a plethora", "way to many to count", "an insane", "a good amount", "an unknown", "many"],
+    late: ["if you are too late", "you fail to get their in time", "are slowed or stopped", "do not succeed in your journey"],
     
   };
   
@@ -16,7 +17,7 @@ const fillers = {
 
   Take this $weapon to help yourself fight through the mountain pass and destroy the One Tony once and for all. It is said that you will be rewarded with $lootpool for your troubles.
   
-  It is unknown if and when the ritual will be completed, but if you are too late, then $amount of Powerful Tony's will be released accross the lands.`;
+  It is unknown if and when the ritual will be completed, but $late, then $amount of Powerful Tony's will be released accross the lands. This would mark the begging of a bigger adventure...`;
   
   // STUDENTS: You don't need to edit code below this line.
   
