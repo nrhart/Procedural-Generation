@@ -1,6 +1,5 @@
-# p1-text-generation-starter
+# p1-Tony's Demise
 
-p1-Tony's Demise
 Tony's Demise takes the templates from the starter code and adds it's own theme,
 which sort of mimics how some games have boss drop pools. So, the goal is for
 a person to fight their way to the One Tony and kill to get a unqiue item
