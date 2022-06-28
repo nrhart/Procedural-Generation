@@ -1,11 +1,15 @@
 /* exported setup, draw */
 let seed = 12345;
 
-const grassColor = "#e1ac4a";
-const skyColor = "#cdd8e6";
-const hillColor = "#1e273f";
-const treeColor = "#3d1803";
-const leaveColor = "#233610";
+const waterColor = "#6dd0f7";
+const skyColorBottom = "#679cf0";
+const skyColorTop = "#4287f5";
+const icebergColor = "#edf0f5";
+const icebergOutline = "#000000";
+//const icebergAccentDark = "#b6b6b8";
+const icebergAccentDark = [182, 182, 182, 150];
+//const icebergAccentLight = "#5cd3e0";
+const icebergAccentLight = [92, 211, 224, 80];
 const sunColor = [254,254,254,80]; // with opacity
 
 function preload() {
@@ -25,101 +29,86 @@ function draw() {
 
   noStroke();
 
-  fill(skyColor);
+  fill(skyColorBottom);
   rect(0, 0, width, height / 2);
+  fill(skyColorTop);
+  rect(0, 0, width, height / 4);
 
   // An example of making something respond to the mouse
   fill(...sunColor);
-  ellipse(mouseX,0,30,30);
-  ellipse(mouseX,0,50,50);
-  ellipse(mouseX,0,100,100);
-  ellipse(mouseX,0,200,200);
+  ellipse(100,0,30,30);
+  ellipse(100,0,50,50);
+  ellipse(100,0,100,100);
+  ellipse(100,0,200,200);
+  
 
-  fill(grassColor);
+  fill(waterColor);
   rect(0, height / 2, width, height / 2);
 
   // An example of drawing an irregular polygon
-  fill(hillColor);
+  fill(icebergColor);
   beginShape();
-  vertex(0, height / 2);
-  const steps = 10;
-  for (let i = 0; i < steps + 1; i++) {
+  vertex(175, height / 2);
+  var steps = 30;
+  for (let i = 0; i < steps / 2; i++) {
     let x = (width * i) / steps;
-    let y =
-      height / 2 - (random() * random() * random() * height) / 8 - height / 50;
-    vertex(x, y);
+    let y = height / 2 - (random() * random() * height) / 4 - height / 10;
+    vertex(x + 200, y);
   }
-  vertex(width, height / 2);
+  
+  vertex(600, height / 2);
+  endShape(CLOSE);
+  
+  fill(icebergAccentLight);
+  beginShape();
+  vertex(175, height / 2);
+  steps = 20;
+  for (let i = 0; i < steps / 2; i++) {
+    let x = (width * i) / steps;
+    let y = height / 2 - (random() * random() * height) / 8 - height / 16;
+    vertex(x + 200, y);
+  }
+  vertex(600, height / 2);
+  endShape(CLOSE);
+  
+  fill(icebergAccentDark);
+  beginShape();
+  vertex(175, height / 2);
+  steps = 20;
+  for (let i = 0; i < steps / 2; i++) {
+    let x = (width * i) / steps;
+    let y = height / 2 - (random() * random() * height) / 8 - height / 32;
+    vertex(x + 200, y);
+  }
+  vertex(600, height / 2);
   endShape(CLOSE);
 
-  const trees = 5*random();
-  for (let i = 0; i < trees; i++) {
-    drawLtree();
+  drawPolarbear(mouseX, (height/2 + 75), 50, 75);
+    
+  const icebergs = 5*random();
+  for (let i = 0; i < icebergs; i++) {
+    drawSmallIceberg();
   }
-
-  // An example of recursively drawing an L-tree 
-  function drawLtree() {
+  
+  function drawSmallIceberg(){
     let x = width * random();
-    let y = height/2 + height/8 * random();
-    let s = width/200 + (y - height/2)/2;
-    let jitter = (mouseX - width/2) / width * 2 * Math.PI / 180;
-    drawLtreeBranch(x, y, s, (-90 * Math.PI / 180) + jitter, 0, 5); // this angle points north (0 is east)
-  }  
-
-  function drawLtreeBranch(x, y, s, angle, max_limit, branch_weight) { // s is length of a segment
-    stroke(treeColor);
-    strokeWeight(branch_weight);
-    let v = p5.Vector.fromAngle(angle, s);
-    let vx = v.x;
-    let vy = v.y; 
-    let x1 = x;
-    let y1 = y; 
-    let x2 = x1 + vx;
-    let y2 = y1 + vy;
-    line(x1, y1, x2, y2);
-
-    let new_s = s * 0.7;
-    let new_max = max_limit + random();
-    let new_branch_weight = branch_weight - 1;
-    new_branch_weight = max(new_branch_weight, 1);
-
-    if (max_limit < 3) {
-        if (random() < 1/3) {
-            drawLtreeBranch(x2, y2, new_s, (-35 * Math.PI / 180) + angle, new_max, new_branch_weight);
-        } else if (random() > 1/3) {
-            drawLtreeBranch(x2, y2, new_s, (35 * Math.PI / 180) + angle, new_max, new_branch_weight);
-        } else {
-            drawLtreeBranch(x2, y2, new_s, (-35 * Math.PI / 180) + angle, new_max, new_branch_weight);
-            drawLtreeBranch(x2, y2, new_s, (35 * Math.PI / 180) + angle, new_max, new_branch_weight);
-        }
-        drawLtreeBranch(x2, y2, new_s, angle, new_max, new_branch_weight);
-    }
-    else {
-        if (random() < 1/3) {
-            drawLeave(x2, y2, new_s, (-35 * Math.PI / 180) + angle);
-        } else if (random() > 1/3) {
-            drawLeave(x2, y2, new_s, (35 * Math.PI / 180) + angle);
-        } else {
-            drawLeave(x2, y2, new_s, (-35 * Math.PI / 180) + angle);
-            drawLeave(x2, y2, new_s, (35 * Math.PI / 180) + angle);
-        }
-    }
-
+    let y = (height/2 + 100) + height/8 * random();
+    noStroke ();
+    fill(icebergOutline);
+    ellipse (x, y, 100, 50);
+    fill(icebergColor);
+    ellipse (x, y, 99, 49);  
   }
-
-  function drawLeave(x, y, s, angle) {
-    fill(leaveColor);
-    noStroke();
-    let v = p5.Vector.fromAngle(angle, s);
-    let vx = v.x;
-    let vy = v.y; 
-    let x1 = x;
-    let y1 = y; 
-    let x2 = x1 + vx;
-    let y2 = y1 + vy;
-    line(x1, y1, x2, y2);
-    circle(x2, y2, 3);
-
+  
+  function drawPolarbear(x, y, width, height){
+    fill(icebergColor);
+    ellipse (x, y, width, height);
+    ellipse (x + 21, y - 25, width/8, height/8);
+    ellipse (x - 21, y - 25, width/8, height/8);
+    fill(icebergOutline);
+    ellipse (x + 10, y - 20, width/8, height/8);
+    ellipse (x - 10, y - 20, width/8, height/8);
+    ellipse (x, y, width/2, height/4);
   }
 }
 
