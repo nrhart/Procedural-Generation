@@ -95,9 +95,9 @@ function draw() {
     let y = (height/2 + 100) + height/8 * random();
     noStroke ();
     fill(icebergOutline);
-    ellipse (x, y, 100, 50);
+    ellipse (x, y, 75, 25);
     fill(icebergColor);
-    ellipse (x, y, 99, 49);  
+    ellipse (x, y, 74, 24);  
   }
   
   function drawPolarbear(x, y, width, height){
