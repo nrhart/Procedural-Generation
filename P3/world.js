@@ -63,12 +63,12 @@ function p3_drawTile(i, j) {
       autotileredeast();
       pop();
     }
-    if(noise(i-1, j) * 3 >= 1 && noise(i,j-1) * 3 < 2){ //north
+    if(noise(i, j-1) * 3 >= 1 && noise(i,j-1) * 3 < 2){ //north
       push();
       autotilerednorth();
       pop();
     }
-    if(noise(i-1, j) * 3 >= 1 && noise(i,j+1) * 3 < 2){ //south
+    if(noise(i, j+1) * 3 >= 1 && noise(i,j+1) * 3 < 2){ //south
       push();
       autotileredsouth();
       pop();
@@ -178,7 +178,7 @@ function autotilerednorth(){
   fill('#db1665')
   noStroke();
   beginShape();
-  vertex(0,64);
+  vertex(0,0);
   vertex(0,16);
   vertex(64,16);
   vertex(64,0);
@@ -188,9 +188,9 @@ function autotileredsouth(){
   fill('#db1665')
   noStroke();
   beginShape();
-  vertex(0,0);
-  vertex(0,16);
-  vertex(64,16);
-  vertex(64,0);
+  vertex(0,64);
+  vertex(0,48);
+  vertex(64,48);
+  vertex(64,64);
   endShape();
 }
