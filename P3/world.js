@@ -52,7 +52,7 @@ function p3_drawTile(i, j) {
   push();
   if(tile < 1){
     push();
-    drawpurple();
+    draworange();
     if(noise(i-1, j) * 3 >= 1 && noise(i-1,j) * 3 < 2){ //west
       push();
       autotileredwest();
@@ -76,7 +76,7 @@ function p3_drawTile(i, j) {
     pop();
   } else if(tile < 2){
     push();
-    drawpinkred();
+    drawgreen();
     pop();  
   } else{
     push();
@@ -118,8 +118,8 @@ function p3_drawSelectedTile(i, j) {
 
 function p3_drawAfter() {}
 
-function drawpinkred(){
-  fill('#db1665')
+function drawgreen(){
+  fill('#284a24');
   noStroke();
   beginShape();
   vertex(0, 0);
@@ -130,8 +130,8 @@ function drawpinkred(){
   endShape(CLOSE);
 }
 
-function drawpurple(){
-  fill('#9a16db')
+function draworange(){
+  fill('#bf520a');
   noStroke();
   beginShape();
   vertex(0, 0);
@@ -143,7 +143,7 @@ function drawpurple(){
 }
 
 function drawyellow(){
-  fill('#e1eb34')
+  fill('#dbc85c');
   noStroke();
   beginShape();
   vertex(0, 0);
@@ -155,7 +155,7 @@ function drawyellow(){
 }
 
 function autotileredwest(){
-  fill('#db1665')
+  fill('#284a24');
   noStroke();
   beginShape();
   vertex(0,0);
@@ -165,7 +165,7 @@ function autotileredwest(){
   endShape();
 }
 function autotileredeast(){
-  fill('#db1665')
+  fill('#284a24');
   noStroke();
   beginShape();
   vertex(64,0);
@@ -175,7 +175,7 @@ function autotileredeast(){
   endShape();
 }
 function autotilerednorth(){
-  fill('#db1665')
+  fill('#284a24');
   noStroke();
   beginShape();
   vertex(0,0);
@@ -185,7 +185,7 @@ function autotilerednorth(){
   endShape();
 }
 function autotileredsouth(){
-  fill('#db1665')
+  fill('#284a24');
   noStroke();
   beginShape();
   vertex(0,64);
