@@ -47,34 +47,34 @@ function p3_drawBefore() {}
 
 function p3_drawTile(i, j) {
   stroke(255);
-  let tile = noise(i,j) * 3;
+  let tile = noise(i,j) * 2.6;
 
   push();
-  if(tile < 1){
+  if(tile < 0.9){
     push();
     draworange();
-    if(noise(i-1, j) * 3 >= 1 && noise(i-1,j) * 3 < 2){ //west
+    if(noise(i-1, j) * 2.6 >= 0.9 && noise(i-1,j) * 2.6 < 1.7){ //west
       push();
       autotileredwest();
       pop();
     }
-    if(noise(i+1, j) * 3 >= 1 && noise(i+1,j) * 3 < 2){ //east
+    if(noise(i+1, j) * 2.6 >= 0.9 && noise(i+1,j) * 2.6 < 1.7){ //east
       push();
       autotileredeast();
       pop();
     }
-    if(noise(i, j-1) * 3 >= 1 && noise(i,j-1) * 3 < 2){ //north
+    if(noise(i, j-1) * 2.6 >= 0.9 && noise(i,j-1) * 2.6 < 1.7){ //north
       push();
       autotilerednorth();
       pop();
     }
-    if(noise(i, j+1) * 3 >= 1 && noise(i,j+1) * 3 < 2){ //south
+    if(noise(i, j+1) * 2.6 >= 0.9 && noise(i,j+1) * 2.6 < 1.7){ //south
       push();
       autotileredsouth();
       pop();
     }
     pop();
-  } else if(tile < 2){
+  } else if(tile < 1.7){
     push();
     drawgreen();
     pop();  
