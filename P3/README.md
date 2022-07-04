@@ -12,5 +12,9 @@ rotating a dedicated draw function, but I had four seperate functions
 that were called depending on what side of the tile it was need for
 (west, east, north, south).
 
+Lastly, I changed up the persistant tile when clicked to make it seem
+like a water tile is being placed to add to the nature of a more lively
+world.
+
 Credit: Adam Smith/Isaac Karth 
 Edited by: Asiiah Song
