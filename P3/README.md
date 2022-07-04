@@ -1,4 +1,4 @@
-# p3-autotiling
+# p3-Autotiling-World
 ## Noah Hart
 
 The effect that I was making was a world with sand and grass blocks
