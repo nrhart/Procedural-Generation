@@ -1,11 +1,18 @@
 let flock;
+let food_array;
+
+let keypressedlastframe = false;
 
 function setup() {
   createCanvas(640, 360);
   createP("Drag the mouse to generate new boids.");
+  createP("Press F to drop fish food where mouse is.")
 
   flock = new Flock();
   // Add an initial set of boids into the system
+
+  food_array = [];
+
   for (let i = 0; i < 10; i++) {
     let b = new Boid(width / 2,height / 2);
     flock.addBoid(b);
@@ -13,8 +20,30 @@ function setup() {
 }
 
 function draw() {
-  background(51);
-  flock.run();
+  if (keypressedlastframe && !keyIsPressed) {
+		if (key == 'F' || key == 'f') {
+			food_array.push([createVector(mouseX, mouseY), 60]);
+		}
+    keypressedlastframe = false;
+  }
+  if (keyIsPressed) {
+		keypressedlastframe = true;
+	}
+
+  background(45, 63, 224);
+  fill(225, 80, 80);
+	stroke(130, 100, 60);
+	
+	for (let i = 0; i < food_array.length; i++) {
+		if (food_array[i][1] == 0) {
+			food_array.splice(i, 1);
+		}
+		else
+		{
+			circle(food_array[i][0].x, food_array[i][0].y, 20*food_array[i][1]/60);
+		}
+	}
+flock.run();
 }
 
 // Add a new boid into the System
@@ -78,16 +107,19 @@ Boid.prototype.flock = function(boids) {
   let ali = this.align(boids);      // Alignment
   let coh = this.cohesion(boids);   // Cohesion
   let avo = this.avoid(boids);      // Avoid walls
+  let att = this.attract(boids);    // Attraction
   // Arbitrarily weight these forces
-  sep.mult(10.0);
+  sep.mult(5.0);
   ali.mult(2.0);
   coh.mult(1.0);
   avo.mult(3.0);
+  att.mult(4.0);
   // Add the force vectors to acceleration
   this.applyForce(sep);
   this.applyForce(ali);
   this.applyForce(coh);
   this.applyForce(avo);
+  this.applyForce(att);
 }
 
 // Method to update location
@@ -122,11 +154,18 @@ Boid.prototype.render = function() {
   push();
   translate(this.position.x, this.position.y);
   rotate(theta);
+  
+  // Draw fish
+  fill(3,244,252)
+  ellipse(0, 0, this.r*4, this.r*2);
   beginShape();
-  vertex(0, -this.r * 2);
-  vertex(-this.r, this.r * 2);
-  vertex(this.r, this.r * 2);
+  vertex(0, 0);
+  vertex(10, -2.5);
+  vertex(10, 2.55);
+  vertex(0, 0);
   endShape(CLOSE);
+  
+
   pop();
 }
 
@@ -234,4 +273,25 @@ Boid.prototype.avoid = function(boids) {
     steer.add(createVector(0, -1));
   }
   return steer;
+}
+
+Boid.prototype.attract = function(boids) {
+	//boid is attracted to food
+
+  let foodlist = 50;
+  let sum = createVector(0, 0);   // Start with empty vector to accumulate all locations
+  let count = 0;
+  for (let i = 0; i < food_array.length; i++) {
+    let d = p5.Vector.dist(this.position, food_array[i][0]);
+    if ((d > 0) && (d < foodlist)) {
+      sum.add(food_array[i][0]); // Add location
+      count++;
+    }
+  }
+  if (count > 0) {
+    sum.div(count);
+    return this.seek(sum);  // Steer towards the location
+  } else {
+    return createVector(0, 0);
+  }
 }
