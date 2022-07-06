@@ -35,14 +35,9 @@ function draw() {
 	stroke(130, 100, 60);
 	
 	for (let i = 0; i < food_array.length; i++) {
-		if (food_array[i][1] == 0) {
-			food_array.splice(i, 1);
-		}
-		else
-		{
 			circle(food_array[i][0].x, food_array[i][0].y, 20*food_array[i][1]/60);
-		}
 	}
+
 flock.run();
 }
 
